@@ -1,0 +1,88 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inconsolata', monospace;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700');
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 100px;
+}
+
+.wrapper {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.list {
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.targer {
+  cursor: pointer;
+}
+
+.todo-body {
+  list-style: none;
+  font-size: 18px;
+  border-top: 1px solid #efefef;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.icon {
+  margin-right: 15px;
+}
+
+.input {
+  border: none;
+  font-size: 18px;
+  font-family: 'Inconsolata', monospace;
+  padding: 10px 0;
+  width: 75%;
+}
+
+.input::placeholder {
+  color: #e1e1e1;
+}
+
+.button {
+  float: right;
+  margin-top: 5px;
+  border-radius: 6px;
+  background-color: #8000ff;
+  padding: 5px 15px;
+  color: white;
+  border: 0;
+  font-size: 18px;
+  font-family: 'Inconsolata', monospace;
+}
+
+.button:hover {
+  background-color: black;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+}
+
+.input-body {
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  width: 100%;
+}
