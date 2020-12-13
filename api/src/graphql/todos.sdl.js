@@ -1,29 +1,28 @@
 export const schema = gql`
   type Todo {
-    body: String
-    _id: ID!
     id: Int!
+    body: String
     status: String
   }
+
   input TodoInput {
-    id: Int!
     body: String!
     status: String!
   }
-  type TodoPage {
-    data: [Todo]!
-    after: String
-    before: String
-  }
+
+  # type TodoPage {
+  #   data: [Todo]!
+  #   after: String
+  #   before: String
+  # }
+
   type Query {
-    todos: TodoPage!
+    todos: [Todo]
   }
+
   type Mutation {
-    createTodo(data: TodoInput!): Todo!
-    updateTodo(
-      id: ID!
-      data: TodoInput!
-    ): Todo
-    deleteTodo(id: ID!): Todo
+    createTodo(body: String!): Todo!
+    updateTodo(id: Int!, data: TodoInput!): Todo
+    deleteTodo(id: Int!): Todo
   }
 `

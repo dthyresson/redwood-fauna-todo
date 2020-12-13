@@ -25,11 +25,7 @@ const AddTodoControl = ({ submitTodo }) => {
           onChange={handleChange}
           className="input"
         />
-        <input
-          type="submit"
-          value="Add Item"
-          className="button"
-        />
+        <input type="submit" value="Add Item" className="button" />
       </div>
     </form>
   )

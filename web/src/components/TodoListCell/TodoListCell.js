@@ -4,9 +4,9 @@ import { useMutation } from '@redwoodjs/web'
 export const QUERY = gql`
   {
     todos {
-      data {
-        body
-      }
+      id
+      body
+      status
     }
   }
 `
@@ -34,9 +34,8 @@ export const Success = ({ todos }) => {
       },
     })
   }
-  console.log(todos)
-  const {data} = todos
-  const list = data.map((todo) => (
+
+  const list = todos.map((todo) => (
     <TodoItem key={todo.id} {...todo} onClickCheck={handleCheckClick} />
   ))
 

@@ -1,4 +1,4 @@
-const faunadb = require('faunadb');
+const faunadb = require('faunadb')
 import { client } from 'src/lib/db'
 
 const {
@@ -13,44 +13,35 @@ const {
   Create,
   Collection,
   Update,
-} = faunadb.query;
+} = faunadb.query
 
-export const todos = () => client.query(
-  Map(
-    Paginate(
-      Match(
-        Index("todos")
-      )
-    ),
-    Lambda(
-      "X",
-      Get(
-        Var("X")
-      )
-    )
+export const todos = async () => {
+  const response = await client.query(
+    Map(Paginate(Match(Index('todos'))), Lambda('X', Get(Var('X'))))
   )
-)
+  console.log(response)
 
-// export const todos = () => db.todo.findMany()
+  const results = response.data.map((item) => {
+    return item.data
+  })
 
+  console.log(results)
 
-export const createTodo = ({body}) => client.query(
-  Create(
-    Collection('Todo'),
-    { data: {body} }
+  return results
+}
+
+export const createTodo = async ({ body }) => {
+  const response = await client.query(
+    Create(Collection('Todo'), { data: { body, status: 'on' } })
   )
-)
+  console.log(response)
+  return response.data
+}
 
-// export const createTodo = ({ body }) => db.todo.create({ data: { body } })
+// // export const createTodo = ({ body }) => db.todo.create({ data: { body } })
 
-export const updateTodoStatus = () => client.query(
-  Update(
-    Ref(
-      Collection('Todo'), '282781647360754176'
-    ),
-    { data }
-  )
-)
+// export const updateTodoStatus = () =>
+//   client.query(Update(Ref(Collection('Todo'), '282781647360754176'), { data }))
 
 // export const updateTodoStatus = ({ id, status }) =>
 //   db.todo.update({
@@ -58,14 +49,8 @@ export const updateTodoStatus = () => client.query(
 //     where: { id },
 //   })
 
-export const renameTodo = () => client.query(
-  Update(
-    Ref(
-      Collection('Todo'), '282781647360754176'
-    ),
-    { data }
-  )
-)
+// export const renameTodo = () =>
+//   client.query(Update(Ref(Collection('Todo'), '282781647360754176'), { data }))
 
 // export const renameTodo = ({ id, body }) =>
 //   db.todo.update({

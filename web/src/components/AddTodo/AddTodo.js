@@ -5,10 +5,7 @@ import { QUERY as TODOS } from 'src/components/TodoListCell'
 const CREATE_TODO = gql`
   mutation AddTodo_CreateTodo($body: String!) {
     createTodo(body: $body) {
-      id
-      __typename
       body
-      status
     }
   }
 `
